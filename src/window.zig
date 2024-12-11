@@ -7,10 +7,10 @@ pub const Window = struct {
     index: i32,
 };
 
-pub fn init_window(TotalWindows: *std.ArrayList(Window)) !void {
+pub fn init_window(windows: *std.ArrayList(Window)) !void {
     const example = Window{ .name = "Example", .active = true, .index = 1 };
 
-    try TotalWindows.append(example);
+    try windows.append(example);
 
     print("name {s} - active {} - index: {}\n", .{ example.name, example.active, example.index });
 }
