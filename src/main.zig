@@ -7,7 +7,11 @@ const allocator = std.heap.page_allocator;
 pub fn main() !void {
     var windows = ArrayList(w.Window).init(allocator);
 
-    try gmux.init(&windows);
+    var state = try gmux.init(&windows);
+
+    try gmux.spawn_sh(&windows, "New sh", 1);
+
+    gmux.update_status(&state);
 
     defer windows.deinit();
 }
